@@ -1,0 +1,72 @@
+@import 'styles/Colors';
+
+.store-element {
+    background-color: $color-white;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba($color-black, .2);
+    font-size: .9em;
+
+    .store-header {
+        display: flex;
+        width: 100%;
+        padding: 13px 15px;
+
+        .store-title {
+            width: calc(100% - 70px);
+
+            .store-name {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                h2 {
+                    display: inline-block;
+                    margin: 0;
+                    font-size: 1em;
+                    white-space: nowrap;
+                }
+        
+                .market-name {
+                    font-size: .9em;
+                    margin-left: .3em;
+                
+                }
+            }
+    
+            .store-desc {
+                font-size: .8em;
+                color: #4d4d4d;
+                margin-top: 5px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .store-info {
+            min-width: 70px;
+            text-align: right;
+            align-self: flex-end;
+
+            .info-rate {
+                font-size: .9em;
+                font-weight: bold;
+                color: $color-orange;
+            }
+
+            .info-status {
+                margin-top: 5px;
+                color: $color-blue;
+            }
+        }
+    }
+    .store-thumb {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+    }
+}
