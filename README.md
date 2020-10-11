@@ -1,19 +1,20 @@
 # 실행 순서
 
-## 1. install yarn
+### 1. install yarn
 
-### `npm -g install yarn`
+#### `npm -g install yarn`
 
-## 2. install dependencies
+### 2. install dependencies
 
-### `yarn install`
+#### `yarn install`
 
-## 3. start project
+### 3. start project
 
-### `yarn start`
+#### `yarn start`  
+
+* * *
 
 
-***
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
