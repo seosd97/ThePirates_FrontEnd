@@ -67,7 +67,9 @@ const Banner = ({ bannerDatas, width, height, interval }) => {
           {bannerDatas.map((d, i) => {
             return (
               <Link
-                to={`/${d.uri}`}
+                // NOTE : bannerData의 점포가 storeData에 없기 때문에 링크 비활성화
+                // to={`/${d.uri}`}
+                to="/"
                 key={i}
                 className={'banner-comment' + (i === content && !isopen ? ' active' : '')}
                 style={{ lineHeight: height }}

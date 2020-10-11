@@ -1,7 +1,5 @@
 const filePath = `${process.env.PUBLIC_URL}/datas/demo_data.json`;
 
-let storeData = null;
-
 const getData = () => {
   return fetch(filePath)
     .then((res) => res.json())
@@ -10,4 +8,12 @@ const getData = () => {
     });
 };
 
-export default { getData };
+const getDataByName = (name) => {
+  return fetch(filePath)
+    .then((res) => res.json().then((json) => json.storeData.find((j) => j.label === name)))
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export default { getData, getDataByName };

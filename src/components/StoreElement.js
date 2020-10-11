@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styles/StoreElement.scss';
 
+const tagName = {
+  'today-price': '오늘시세',
+  'day-delivery': '당일배송',
+};
+
 const StoreElement = ({ storeData }) => {
   return (
-    <Link to="/" className="store-element">
+    <Link to={`${storeData.label}`} className="store-element">
       <div className="store-header">
         <div className="store-title">
           <div className="store-name">
@@ -21,6 +26,15 @@ const StoreElement = ({ storeData }) => {
       </div>
       <div className="store-thumb">
         <img src={storeData.thumbnail} alt="thumbnail"></img>
+        <div className="store-tag-container">
+          {storeData.tags.map((t, i) => {
+            return (
+              <span key={i} className="store-tag" data-value={t}>
+                {tagName[t]}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </Link>
   );

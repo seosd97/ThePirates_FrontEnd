@@ -29,12 +29,16 @@
                 top: 0;
             }
         }
+
+        #open-button {
+            transform: rotate(180deg);
+        }
     }
 
     .banner-container {
         position: relative;
         top: 0;
-        
+
         .banner-comment {
             position: relative;
             top: 40px;
@@ -141,13 +145,40 @@
             border-right: 1px solid #cccccc;
             color: $color-black;
 
-            &:active {
+            &.active {
                 font-weight: bold;
             }
 
             &:last-child {
                 border-bottom: none;
             }
+        }
+    }
+}
+
+.store-tag-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 10px;
+    bottom: 10px;
+
+    .store-tag {
+        margin-right: 10px;
+        color: $color-white;
+        background-color: $color-black;
+        border-radius: 5px;
+        font-size: .8em;
+        font-weight: bold;
+        padding: 5px;
+        text-align: center;
+
+        &[data-value='today-price'] {
+            background-color: green;
+        }
+
+        &[data-value='day-delivery'] {
+            background-color: $color-blue;
         }
     }
 }

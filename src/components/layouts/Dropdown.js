@@ -50,8 +50,8 @@ Dropdown.defaultProps = {
   height: '40px',
   rowCount: 1,
   defaultValue: '',
-  onClick: null,
-  onChange: null,
+  onClick: () => {},
+  onChange: () => {},
 };
 
 Dropdown.propTypes = {

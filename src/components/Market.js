@@ -66,8 +66,14 @@ const Market = () => {
 
   useEffect(() => {
     DataApi.getData().then((d) => {
+      d.zoneData = [
+        { label: '모든지역', code: '' },
+        { label: '가까운곳', code: '' },
+      ].concat(d.zoneData);
       setMarketData(d);
-      setStoreData(d.storeData.slice(0, 10));
+      // setStoreData(d.storeData.slice(0, 10));
+      setStoreData(d.storeData);
+
       setIsLoading(false);
     });
   }, [isLoading]);
@@ -83,20 +89,33 @@ const Market = () => {
               rowCount={3}
               onClick={handleDropdown}
               onChange={(v) => {
-                setFilter((prev) => {
-                  return { ...prev, filterZone: v };
-                });
+                if (v === '모든지역' || v === '가까운곳') {
+                  setStoreData(marketData.storeData);
+                  return;
+                }
+
+                const zone = marketData.zoneData.find((z) => z.label === v);
+                let location = [];
+                zone.locations.forEach((l) => location.push(l.label));
+
+                const filtered = marketData.storeData.filter((s) => location.includes(s.market));
+                setStoreData(filtered);
               }}
+              defaultValue="모든지역"
             />
-            <Dropdown menuDatas={marketData.itemData} rowCount={3} onClick={handleDropdown} />
             <Dropdown
-              menuDatas={[
-                {
-                  label: '기본 순',
-                  code: '0',
-                },
-              ]}
+              menuDatas={marketData.itemData}
+              rowCount={3}
               onClick={handleDropdown}
+              onChange={(v) => {}}
+              defaultValue="모든품목"
+            />
+            <Dropdown
+              menuDatas={[{ label: '기본순' }]}
+              rowCount={1}
+              onClick={handleDropdown}
+              onChange={(v) => {}}
+              defaultValue="기본순"
             />
           </div>
           <Search
