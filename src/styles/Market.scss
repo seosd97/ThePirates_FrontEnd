@@ -3,14 +3,29 @@
 .market-root {
     width: 100%;
 
+    .market-header {
+        #filter-container {
+            display: flex;
+
+            .ui-dropdown {
+                border-right: 1px solid rgba($color-black, .2);
+                color: $color-blue;
+
+                &:last-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+
     .store-container {
         background-color: $color-gray;
-        padding: 5px 10px;
+        padding: 5px 20px;
 
         h1 {
             color: $color-blue;
             font-size: .9em;
-            margin-top: 2em;
+            margin-top: 1em;
         }
     }
 }

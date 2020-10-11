@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Layout from './layouts/Layout';
 import '../styles/Market.scss';
 import StoreElement from './StoreElement';
+import Search from './layouts/Search';
+import Banner from './layouts/Banner';
+import Dropdown from './layouts/Dropdown';
 
 const Market = () => {
   const [stores, setStores] = useState([
@@ -57,6 +60,81 @@ const Market = () => {
   return (
     <Layout>
       <main className="market-root">
+        <section className="market-header">
+          <Banner
+            bannerDatas={[
+              {
+                label: '풍천민물장어(400g)',
+                price: '38,000원→30,000원',
+                comment: '(20% 할인쿠폰)',
+                outLink: '',
+                zoneLabel: '가락',
+                permalink: '가락시장놀부수산',
+                uri: '가락시장놀부수산',
+              },
+              {
+                label: '활새우(대)',
+                price: '25,000원/kg',
+                comment: '전국최저가',
+                outLink: '',
+                zoneLabel: '인천',
+                permalink: '인천종합연안부두어시장서림상회',
+                uri: '인천종합연안부두어시장서림상회',
+              },
+            ]}
+          />
+          <div id="filter-container">
+            <Dropdown
+              menuDatas={[
+                {
+                  label: '노량진',
+                  code: '0000000002',
+                },
+                {
+                  label: '마포',
+                  code: '0000000004',
+                },
+                {
+                  label: '강서',
+                  code: '0000000005',
+                },
+              ]}
+            />
+            <Dropdown
+              menuDatas={[
+                {
+                  label: '노량진',
+                  code: '0000000002',
+                },
+                {
+                  label: '마포',
+                  code: '0000000004',
+                },
+                {
+                  label: '강서',
+                  code: '0000000005',
+                },
+              ]}
+            />
+            <Dropdown
+              menuDatas={[
+                {
+                  label: '노량진',
+                  code: '0000000002',
+                },
+                {
+                  label: '마포',
+                  code: '0000000004',
+                },
+                {
+                  label: '강서',
+                  code: '0000000005',
+                },
+              ]}
+            />
+          </div>
+          <Search placeholder="검색어를 입력하세요." />
+        </section>
         <section className="store-container">
           <h1>프리미엄 가게</h1>
           {stores.map((s, i) => {

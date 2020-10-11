@@ -5,7 +5,7 @@ import '../styles/StoreElement.scss';
 
 const StoreElement = ({ storeData }) => {
   return (
-    <article className="store-element">
+    <Link to="/" className="store-element">
       <div className="store-header">
         <div className="store-title">
           <div className="store-name">
@@ -16,13 +16,13 @@ const StoreElement = ({ storeData }) => {
         </div>
         <div className="store-info">
           <div className="info-rate">★ {storeData.summary.rating}</div>
-          <div className="info-status">영업 중</div>
+          <div className="info-status">{storeData.state === 'OPEN' ? '영업 중' : '영업종료'}</div>
         </div>
       </div>
       <div className="store-thumb">
         <img src={storeData.thumbnail} alt="thumbnail"></img>
       </div>
-    </article>
+    </Link>
   );
 };
 
