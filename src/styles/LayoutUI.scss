@@ -1,25 +1,65 @@
 @import 'styles/Colors';
 
+
+@keyframes slideUp {
+    0% {
+        top: 40px
+    }
+    100% {
+        top: 0
+    }
+}
+
 #layout-banner {
     position: relative;
+    top: 0;
     background-color: #363636;
+    overflow: hidden;
     color: $color-white;
 
-    #banner-comment {
-        display: block;
-        font-size: .9em;
-        font-weight: bold;
-        padding-right: 30px;
-        padding-left: 20px;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        text-decoration: none;
-        color: inherit;
+    &.opened {
+        overflow: visible;
+        z-index: 10;
+        
+        .banner-container {
+            top: 0;
+            background-color: #363636;
 
-        #price {
-            color: #B8E986;
+            .banner-comment {
+                top: 0;
+            }
+        }
+    }
+
+    .banner-container {
+        position: relative;
+        top: 0;
+        
+        .banner-comment {
+            position: relative;
+            top: 40px;
+            display: block;
+            font-size: .9em;
+            font-weight: bold;
+            padding-right: 30px;
+            padding-left: 20px;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-decoration: none;
+            color: inherit;
+    
+            &.active {
+                position: absolute;
+                width: 100%;
+                animation: slideUp 1.5s ease;
+                animation-fill-mode: forwards;
+            }
+    
+            .price {
+                color: #B8E986;
+            }
         }
     }
 
@@ -39,7 +79,7 @@
 
 #layout-search {
     padding: 7px 15px;
-    border: 1px solid rgba($color-black, .2);
+    border: 1px solid #cccccc;
 
     #input-form {
         display: flex;
@@ -78,7 +118,36 @@
     text-align: center;
     font-size: 1rem;
 
-    .menu-token {
-        font-size: 1.5em;
+    &.active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu {
+        text-align: left;
+        display: none;
+        position: absolute;
+        width: 100%;
+        background-color: $color-white;
+        border: 1px solid #cccccc;
+        z-index: 1;
+
+        &.disabled {
+            display: none;
+        }
+
+        .menu-item {
+            text-align: center;
+            border-bottom: 1px solid #cccccc;
+            border-right: 1px solid #cccccc;
+            color: $color-black;
+
+            &:active {
+                font-weight: bold;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
     }
 }

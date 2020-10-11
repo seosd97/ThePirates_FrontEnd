@@ -4,12 +4,19 @@
     width: 100%;
 
     .market-header {
+        position: relative;
+
         #filter-container {
+            position: relative;
             display: flex;
 
             .ui-dropdown {
                 border-right: 1px solid rgba($color-black, .2);
                 color: $color-blue;
+                
+                &.disabled {
+                        color: #cccccc;
+                }
 
                 &:last-child {
                     border-right: none;
